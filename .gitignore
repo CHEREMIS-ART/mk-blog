@@ -79,3 +79,4 @@ npm-debug.log
 yarn-error.logs
 
 .pre-commit-cache/
+poetry.lock
