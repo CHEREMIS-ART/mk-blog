@@ -16,3 +16,7 @@ repos:
       - id: mypy
         pass_filenames: false
         args: ["--explicit-package-bases", "src"]
+        additional_dependencies:
+        - pydantic>=2.0
+        - pydantic-settings
+        - fastapi
