@@ -51,7 +51,7 @@ def list_articles(
         query = query.filter(search_expr.match(search))
 
     total = query.count()
-    items = (
+    articles = (
         query.order_by(Article.created_at.desc())
         .offset((page_number - 1) * page_size)
         .limit(page_size)
@@ -59,6 +59,8 @@ def list_articles(
     )
 
     total_pages = ceil(total / page_size) if total else 1
+
+    items = [ArticleOut.model_validate(article) for article in articles]
 
     return PaginatedArticles(
         items=items,

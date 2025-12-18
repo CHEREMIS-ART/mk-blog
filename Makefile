@@ -26,12 +26,12 @@ run:
 
 .PHONY: lint
 lint:
-	$(POETRY_RUN) ruff src tests
+	$(POETRY_RUN) ruff check src tests
 	$(POETRY_RUN) black --check src tests
 
 .PHONY: fmt
 fmt:
-	$(POETRY_RUN) ruff src tests --fix
+	$(POETRY_RUN) ruff check --fix src tests
 	$(POETRY_RUN) black src tests
 
 .PHONY: typecheck
@@ -40,7 +40,7 @@ typecheck:
 
 .PHONY: test
 test:
-	$(POETRY_RUN) pytest
+	ENV=test $(POETRY_RUN) pytest
 
 .PHONY: pre-commit-install
 pre-commit-install:

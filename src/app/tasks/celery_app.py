@@ -11,3 +11,7 @@ celery_app = Celery(
 celery_app.conf.task_routes = {
     "src.app.tasks.email.send_registration_email": {"queue": "emails"},
 }
+
+if settings.ENV == "test":
+    celery_app.conf.task_always_eager = True
+    celery_app.conf.task_eager_propagates = True

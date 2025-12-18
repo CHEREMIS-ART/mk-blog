@@ -2,7 +2,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+    )
+
+    ENV: str = "local"
 
     DATABASE_URL: str
 
@@ -24,8 +29,6 @@ class Settings(BaseSettings):
     EMAIL_USER: str
     EMAIL_PASSWORD: str
     EMAIL_FROM: str
-
-    APP_ENV: str = "local"
 
     COOKIE_NAME: str = "access_token"
 
