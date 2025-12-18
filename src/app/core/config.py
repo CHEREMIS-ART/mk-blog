@@ -30,4 +30,4 @@ class Settings(BaseSettings):
     COOKIE_NAME: str = "access_token"
 
 
-settings = Settings()
+settings = Settings()  # type: ignore[call-arg]

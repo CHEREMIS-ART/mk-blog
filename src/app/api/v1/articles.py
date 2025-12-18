@@ -87,8 +87,8 @@ async def create_article(
         raise HTTPException(status_code=400, detail="Category does not exist")
 
     image_url: Optional[str] = None
-    if image:
-        ext = image.filename.split(".")[-1]
+    if image is not None and image.filename:
+        ext = image.filename.rsplit(".", 1)[-1].lower()
         filename = f"{uuid.uuid4()}.{ext}"
         image_url = upload_image(image.file, filename, image.content_type or "image/*")
 
